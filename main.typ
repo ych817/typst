@@ -41,7 +41,7 @@
   number-format: (number) => text(fill: white)[#number],
   header-transform: (hdr) => {
     text(size: 0.7em, weight: "regular", fill: white)[#hdr]
-    // text()[#hide("hello")]
+    text()[#hide("fgFG")]
   },
   header-repeat: true,
   header-cell-args: (align: left, fill: rgb("#3d308a")),
