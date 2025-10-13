@@ -35,7 +35,7 @@
   fill: rgb("#1d2433"),
   radius: .5em,
   stroke: gray + .4pt,
-  lang-outset: (x: .3em, y: .2em),
+  lang-outset: (x: .2em, y: .1em),
   lang-radius: .4em,
   number-align: right + horizon,
   number-format: (number) => {
@@ -60,8 +60,8 @@
       inset: padding,
       stroke: lang_stroke,
       outset: 0em,
-      height: b.height + padding * 2,
-      text(fill: black)[#name #icon],
+      height: b.height + .3em ,// + padding * 2,
+      text(fill: black, size: 0.7em)[#name #icon],
     )
   },
   highlight-fill: (c) => c.darken(70%),
