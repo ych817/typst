@@ -17,6 +17,11 @@
   // fill: white
 )
 #show math.equation: it => box(
+  // height: measure([fgFGH ( ) ]).height,
+  // height: measure([Hellofg]).height,
+  stroke: black+.4pt,
+  align(//horizon,
+  box(
   baseline : 0pt,
   fill: silver.transparentize(90%),
   // fill: black,
@@ -25,7 +30,7 @@
   stroke: gray + .4pt,
   radius: .5em,
   it
-)
+)))
 #set page(
   paper: "a3", 
   flipped: true,
