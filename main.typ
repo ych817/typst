@@ -6,7 +6,7 @@
 #set text(
   12pt,
   font:(
-    "STIX Two Text",
+    "Sarasa UI SC",
     "Sarasa UI SC"
   )
 )
@@ -38,7 +38,11 @@
   lang-outset: (x: .3em, y: .2em),
   lang-radius: .4em,
   number-align: right + horizon,
-  number-format: (number) => text(fill: white)[#number],
+  number-format: (number) => {
+    let sample = `999`
+    let w = measure(sample).width
+    box(width: w)[#text(fill: white)[#number]]
+  },
   header-transform: (hdr) => {
     text(size: 0.7em, weight: "regular", fill: white)[#hdr#hide("fgFG")]
   },
