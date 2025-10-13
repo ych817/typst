@@ -10,15 +10,15 @@
     "Sarasa UI SC"
   )
 )
-// #set math.equation(block: true)
-// #show math.equation: set text(size: .75em, fill: white)
-// #show math.equation: box.with(
-//   fill: rgb("#000000"),
-//   inset: (x: .3em, y: 0em),
-//   outset: (y: .75em),
-//   stroke: gray + .4pt,
-//   radius: .5em,
-// )
+#set math.equation(block: true)
+#show math.equation: set text(size: .75em, fill: white)
+#show math.equation: box.with(
+  fill: rgb("#000000"),
+  inset: (x: .3em, y: 0em),
+  outset: (y: .5em),
+  stroke: gray + .4pt,
+  radius: .5em,
+)
 #set page(
   paper: "a3", 
   flipped: true,
@@ -82,7 +82,8 @@
   highlight-radius: .4em,
 )
 
-#set par(leading: 1em)
+#show enum: set par(first-line-indent: 0em)
+// #set par(leading: 1em)
 // #let uline(answer: false, body) = context {
 //   let show_all_answer = false
 //   show_all_answer = true
@@ -114,7 +115,9 @@
 #text(20pt, blue, stroke: .4pt + teal)[问题：]
 
 - 如果传入的公式是行间公式，不清楚如何放置下划线\
-  $ f(x)dif x $
+  $ display(integral f(x)dif x) $
+
+  那么会怎么样呢 ? 是否会有缩进 a very very very very very very very very very very very very very very long text
 
 - 不清楚如何针对公式的宽度自适应下划线的位置\
   对于 $upright(p^+n)$ 结，其扩散电容的表达式为：
