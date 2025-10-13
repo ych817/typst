@@ -10,6 +10,14 @@
     "Sarasa UI SC"
   )
 )
+// #set math.equation(block: true)
+// #show math.equation: set text(size: .75em, fill: rgb("#a9b1d6"))
+// #show math.equation: box.with(
+//   fill: rgb("#000000"),
+//   inset: (x: .3em, y: 0em),
+//   outset: (y: .3em),
+//   radius: .5em,
+// )
 #set page(
   paper: "a3", 
   flipped: true,
@@ -64,7 +72,7 @@
       text(fill: black, size: 0.7em)[#name #icon],
     )
   },
-  highlight-fill: (c) => c.darken(70%),
+  highlight-fill: (c) => c.transparentize(75%),
   highlight-stroke: (c) => 0.4pt + c,
   highlight-inset: 0em, 
   highlight-outset: (x:0em, y:.3em),
@@ -107,7 +115,10 @@
   #uline()[$ f(x)dif x $]
 
 - 不清楚如何针对公式的宽度自适应下划线的位置\
-  对于 $upright(p^+n)$ 结，其扩散电容的表达式为：#uline(answer: true)[$ C_D = (frac(A q^2 p_(n_0)L_p, k_o T)) exp(frac(q V , k_o T))$]
+  对于 $upright(p^+n)$ 结，其扩散电容的表达式为：
+  #uline(answer: true)[
+    $ C_D = (frac(A q^2 p_(n_0)L_p, k_o T)) exp(frac(q V , k_o T))$
+  ]
 
 你好。下面是一段测试文字 。
 
@@ -260,4 +271,38 @@ also trimmed.
 #repr[#strong]\
 #type[#strong]
 
-`Hello world ! this is a very very very very very very very very very very very lo` `ong text`
+`Hello world ! this is a very very very very very very very very very very very lo` `ng text`
+
+
+
+
+// #let auto-columns(count, body) = context {
+//   let items = body.children.filter(el => el.func() == enum.item)
+//   let height = measure(enum(..items.slice(0, calc.ceil(items.len() / count)))).height
+//   block(height: height, columns(count, body))
+// }
+
+// 设 $A eq.not nothing and op("Tr")(A)$，下列谓词或项绝对。
+// #auto-columns(3)[
+//   + $a in b$
+//   + $a = b$
+//   + $MM(a)$
+//   + $Pr(a)$
+//   + $nothing$
+//   + $a subset.eq b$
+//   + $a subset b$
+//   + ${a, b}$
+//   + $union a$
+//   + $inter a$
+//   + $a union b$
+//   + $a inter b$
+//   + $a - b$
+//   + ${a_1 ,dots.h, a_n}$
+//   + #align(alignment.horizon)[
+//       $display(sum_(k=0)^114514 a_3)$ 泥濠\
+//       Hello world , \
+//       bonjour monde
+//     ]
+//   + $a$
+//   + $b$
+// ]
