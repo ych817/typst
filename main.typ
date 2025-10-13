@@ -3,6 +3,8 @@
 #import "@preview/pleast:0.3.0": plist
 // #import "@preview/zebraw:0.5.5": *
 
+#set par(leading: 2em)
+// #show enum.item: set par(first-line-indent: 0em)
 #set text(
   12pt,
   font:(
@@ -10,14 +12,19 @@
     "Sarasa UI SC"
   )
 )
-#set math.equation(block: true)
-#show math.equation: set text(size: .75em, fill: white)
-#show math.equation: box.with(
-  fill: rgb("#000000"),
+#show math.equation: set text(
+  size: .75em, 
+  // fill: white
+)
+#show math.equation: it => box(
+  baseline : 0pt,
+  fill: silver.transparentize(90%),
+  // fill: black,
   inset: (x: .3em, y: 0em),
-  outset: (y: .5em),
+  outset: (y: 1em),
   stroke: gray + .4pt,
   radius: .5em,
+  it
 )
 #set page(
   paper: "a3", 
@@ -82,30 +89,6 @@
   highlight-radius: .4em,
 )
 
-#show enum: set par(first-line-indent: 0em)
-// #set par(leading: 1em)
-// #let uline(answer: false, body) = context {
-//   let show_all_answer = false
-//   show_all_answer = true
-  
-//   let y = 1em / 5
-//   let l = measure(body).width + 3pt
-//   if body.has("block") { // 内容是否是公式
-//     if body.fields().block { // 行间公式
-//       set align(center)
-//       block(outset: (bottom:0.1em), stroke: (bottom: 0.6pt))[#body]
-//       return
-//     } else { // 行内公式
-//       y = 1em / 2
-//     }
-//   }
-//   box(place(dy: y, dx: 2pt, line(length: l, stroke: .6pt)))
-//   if show_all_answer {
-//     [ ] + body + [ ]
-//   } else {
-//     [ ] + if answer { body } else { hide(body) } + [ ]
-//   }
-// }
 + 计算 $x+y$
 
 + 第一布里渊区的范围是：$-pi / a < k < pi / a$
@@ -115,30 +98,31 @@
 #text(20pt, blue, stroke: .4pt + teal)[问题：]
 
 - 如果传入的公式是行间公式，不清楚如何放置下划线\
-  $ display(integral f(x)dif x) $
+  $display(integral f(x)dif x)$ hello world
 
-  那么会怎么样呢 ? 是否会有缩进 a very very very very very very very very very very very very very very long text
+  那么会怎么样呢 ? 是否会有缩进\
+  是否会有缩进 ?
 
-- 不清楚如何针对公式的宽度自适应下划线的位置\
-  对于 $upright(p^+n)$ 结，其扩散电容的表达式为：
+- 不清楚如何针对公式的宽度自适应下划线的位置 : 对于 $upright(p^+n)$ 结，\
+  其扩散电容的表达式为：
   $ C_D = (frac(A q^2 p_(n_0)L_p, k_o T)) exp(frac(q V , k_o T))$
-
-你好。下面是一段测试文字 。
+  $display(integral f(x)dif x)$
 
 ```python
 x = 3
 print("Hello, World!")
 ```
 
-#let txt = [Here is the content of the variable *with style*]
-
-#highlight(
-  fill: rgb("#eded1f"),
-  stroke: gray+.4pt,
-  extent: 2pt,
-  radius: 30%,
-  [#txt]
-)
+#{
+  let txt = [Here is the content of the variable *with style*]
+  highlight(
+    fill: rgb("#eded1f"),
+    stroke: gray+.4pt,
+    extent: 2pt,
+    radius: 30%,
+    [#txt]
+  ) 
+}
 
 #let code-example = [
 #let forecast(day) = block[
@@ -266,13 +250,7 @@ also trimmed.
 
 #strong([Hello World])
 
-#{
-  let x = 2 ; let z = 3
-  let y = x + 5 ; y + z
-}
-
-#repr[#strong]\
-#type[#strong]
+#repr[#strong] , #type[#strong]
 
 `Hello world ! this is a very very very very very very very very very very very lo` `ng text`
 
@@ -309,3 +287,11 @@ also trimmed.
 //   + $a$
 //   + $b$
 // ]
+
+
+#let value = context text.lang
+#value
+#set text(lang: "de")
+#value
+#set text(lang: "fr")
+#value
