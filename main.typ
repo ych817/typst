@@ -3,7 +3,7 @@
 #import "@preview/pleast:0.3.0": plist
 // #import "@preview/zebraw:0.5.5": *
 
-#set par(leading: 2em)
+// #set par(leading: 1.2em)
 // #show enum.item: set par(first-line-indent: 0em)
 #set text(
   12pt,
@@ -12,25 +12,6 @@
     "Sarasa UI SC"
   )
 )
-#show math.equation: set text(
-  size: .75em, 
-  // fill: white
-)
-#show math.equation: it => box(
-  // height: measure([fgFGH ( ) ]).height,
-  // height: measure([Hellofg]).height,
-  stroke: black+.4pt,
-  align(//horizon,
-  box(
-  baseline : 0pt,
-  fill: silver.transparentize(90%),
-  // fill: black,
-  inset: (x: .3em, y: 0em),
-  outset: (y: 1em),
-  stroke: gray + .4pt,
-  radius: .5em,
-  it
-)))
 #set page(
   paper: "a3", 
   flipped: true,
@@ -92,6 +73,7 @@
   highlight-outset: (x:0em, y:.3em),
   highlight-clip: false,
   highlight-radius: .4em,
+  // highlighted-default-color: teal.darken(70%)
 )
 
 + 计算 $x+y$
@@ -155,7 +137,9 @@ print("Hello, World!")
   highlights: (
     (line: 4, start: 5, end: 14, fill: orange, tag: "(c)"),
     (line: 5, start: 14, end: 16, fill: green, tag: "(a)"),
-    (line: 5, start: 29, end: 35, fill: teal, tag: "(b)"))
+    (line: 5, start: 29, end: 35, fill: teal, tag: "(b)")
+  ),
+  // highlighted-lines: (4, 5)
 )
 ```typ
 #let forecast(day) = block[
@@ -300,3 +284,18 @@ also trimmed.
 #value
 #set text(lang: "fr")
 #value
+
+#let items = ([A], [g], [中], $1$)
+#context table(
+  columns: 2,
+  stroke: (x: none),
+  ..items
+    .map(it => (
+      it,
+      [#measure({
+        set text(top-edge: "baseline", bottom-edge: "baseline")
+        it
+      })],
+    ))
+    .flatten()
+)
