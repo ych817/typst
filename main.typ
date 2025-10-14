@@ -1,10 +1,9 @@
 #import "@preview/codly:1.2.0": *
 #import "@preview/codly-languages:0.1.1": *
 #import "@preview/pleast:0.3.0": plist
-// #import "@preview/zebraw:0.5.5": *
+#import "@preview/mannot:0.3.0" : *
 
-// #set par(leading: 1.2em)
-// #show enum.item: set par(first-line-indent: 0em)
+// #set par(leading: 1em)
 #set text(
   12pt,
   font:(
@@ -18,6 +17,33 @@
   columns: 2
   // margin: (x: 8pt, y: 8pt)
 )
+// #show math.equation: set text(
+//  size: .75em, 
+//  top-edge: "baseline",
+//  bottom-edge: "baseline",
+//  fill: white
+// )
+// #show math.equation: it => box(
+//   stroke: black+.4pt,
+//   height: measure({
+//     set text(
+//       // top-edge: "baseline",
+//       bottom-edge: "baseline",
+//     )
+//     it
+//   }).height,
+//   align(
+//     horizon,
+//     box(
+//       fill: silver.transparentize(50%),
+//       inset: (x: .3em, y: 0em),
+//       outset: (y: 1em),
+//       stroke: gray + .4pt,
+//       radius: .5em,
+//       it
+//     )
+//   )
+// )
 #set raw(
   theme: "tokyo-night.tmTheme"
 )
@@ -188,42 +214,6 @@ the desired result.
 What is ```rust fn main()``` in Rust
 would be ```c int main()``` in C.
 
-// #let zebcode = ```typ
-// #let forecast(day) = block[
-//   #box(square(
-//     width: 2cm,
-//     inset: 8pt,
-//     fill: if day.weather == "sunny" {
-//       yellow
-//     } else {
-//       aqua
-//     },
-//     align(
-//       bottom + right,
-//       strong(day.weather),
-//     ),
-//   ))
-//   #h(6pt)
-//   #set text(22pt, baseline: -8pt)
-//   #day.temperature °#day.unit
-// ]
-// ```
-
-// #zebraw(
-//   hanging-indent: true,
-//   background-color: rgb("#1d2433"),
-//   lang: text(black)[typst],
-//   lang-color: eastern,
-//   lang-font-args: (
-//     font: "Buenard",
-//     weight: "bold",
-//     fill: white,
-//   ),
-//   header: text(black)[*Test Code*],
-//   zebcode
-// )
-
-
 ```rust
 fn main() {
     println!("Hello World!");
@@ -288,14 +278,24 @@ also trimmed.
 #let items = ([A], [g], [中], $1$)
 #context table(
   columns: 2,
-  stroke: (x: none),
+  stroke: (x: .4pt, y: .4pt),
   ..items
     .map(it => (
-      it,
+      align(center)[#it],
       [#measure({
-        set text(top-edge: "baseline", bottom-edge: "baseline")
+        set text(
+          top-edge: "baseline", 
+          bottom-edge: "baseline"
+          // bottom-edge: "descender"
+        )
         it
       })],
     ))
     .flatten()
 )
+
+$mark(x, color: #green)
++ markhl(f(x), color: #purple, stroke: #.4pt, radius: #.4em)
++ markrect(e^x, color: #red, fill: #blue, outset: #.2em)
++ markul(x + 1, color: #gray, stroke: #.4pt)
++ markhl(display(integral f(x) dif x), color: #teal)$
