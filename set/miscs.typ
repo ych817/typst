@@ -1,0 +1,3 @@
+#let miscs(doc) = {
+  doc
+}
